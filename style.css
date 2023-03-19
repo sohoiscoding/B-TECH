@@ -14,63 +14,64 @@
     src: url('./assets/fonts/Rubik-Regular.ttf');
 }
 
-.nav-bar{
+/* body{
+    width: 100vw;
+    height: 100vh;
+} */
+
+.navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #000814;
-    height: 80px;
+    height: 70px;
     width: 100vw;
     padding: 30px;
+}
+.navbar a{
+    transition: all 0.3s ease;
+    color: #fff;
+}
 
+.navbar a:hover{
+    color: #FFD60A  ;
+}
+.logo{
+    font-size: 2rem;
 }
 
 .menu{
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.menu-list{
-    display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    transition: all 0.5s ease-in-out;
 }
 
-.menu-list__item{
+.menu__item{
     margin: 8px 32px;
 }
 
-.nav-bar a{
-    color: #fff;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-#signup_btn{
+#signup-btn{
     width: 100px;
     height: 50px;
     border-radius: 4px;
+    margin: 8px 32px;
     white-space: nowrap;
     font-weight: bold;
-
 }
 
-#signup_btn:hover{
+#signup-btn:hover{
     background-color: #FFD60A;
     transition: all 0.3s ease;
     cursor: pointer;
     color: #001D3D;
 }
 
-.nav-bar a:hover{
-    color: #FFD60A  ;
-}
-
-.mobile-menu_btn{
-    margin: 5px;
-    cursor: pointer;
+#mobile-menu-btn{
     display: none;
+    margin: 3px;
+    cursor: pointer;
 }
 
 .bar{
@@ -78,5 +79,46 @@
     width: 25px;
     height:3px;
     margin: 5px;
+    border-radius: 3px;
     background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width:600px){
+    .navbar{
+        position: relative;
+    }
+    .logo{
+        font-size: 1rem;
+    }
+    
+    #mobile-menu-btn{
+        display: block;
+    }
+
+    #mobile-menu-btn.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    #mobile-menu-btn.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    #mobile-menu-btn.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .menu{
+        position: absolute;
+        display: none;
+        z-index: -1;
+        top: -150vh;
+    } 
+    .menu.active{
+        display: flex;
+        background-color:#000814 ;
+        flex-direction: column;
+        height: 50vh;
+        width: 100vw;
+        z-index: 99;
+        top: 100%;
+    }
 }
